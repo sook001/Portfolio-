@@ -1,0 +1,619 @@
+:root {
+    --midnight: #04050f;
+    --deep: #080c1e;
+    --navy: #0d1230;
+    --indigo: #1a1f4e;
+    --blue-violet: #2a3080;
+    --comet: #6b77cc;
+    --ice: #c8d4f8;
+    --white: #f0f2ff;
+    --gold: #e8c87a;
+    --gold-dim: #9e8840;
+    --pink: #e8a0c8;
+    --serif: 'Cormorant Garamond', 'Noto Serif JP', serif;
+    --mono: 'Space Mono', monospace;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ตั้งค่าสีหลัก */
+body {
+    background-color: var(--midnight);
+    color: var(--white);
+    font-family: var(--serif);
+    margin: 0;
+    cursor: none ;
+}
+
+
+/* cursor */
+.cursor {
+    position: fixed;
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+
+.cursor-ring {
+    position: fixed;
+    width: 32px; height: 32px;
+    border: 1px solid rgba(232,200,122,0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+
+#hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    align-items: center;
+    z-index: 1;
+}
+
+/* lable */
+.hero-lable {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    margin-bottom: 1.5rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 1s 0.5s forwards;
+}
+
+/* jp name */
+.hero-name-jp {
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    line-height: 1;
+    color:var(--white);
+    text-shadow: 0 0 60px rgba(107,119,204,0.5);
+    margin-top: 1rem;
+    margin-bottom: 10px;
+    animation: fadeUp 1s 0.6s forwards;
+    opacity: 0;
+}
+
+/* en name */
+.hero-name-en {
+    font-family: var(--mono);
+    font-size: clamp(0.5rem, 1.2vw, 0.8rem);
+    letter-spacing: 0.6em;
+    color: var(--comet);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: fadeUp 1s 0.9s forwards;
+    opacity:0;
+}
+
+
+/* tagline */
+.hero-tagline {
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    letter-spacing: 0.05em;
+    font-style: italic;
+    color: rgba(200,212,248,0.5);
+    animation: fadeUp 1s 1.2s forwards;
+    opacity:0;
+}
+
+
+
+/* ===== NAVBAR ===== */
+nav{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid rgba(107,119,204,0.15);
+    background: linear-gradient(to bottom, rgba(4,5,15,0.9),rgba(4,5,15,0.5));
+    backdrop-filter: blur(2px);
+}
+
+.nav-logo {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color:var(--gold);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: rgba(200,212,248,0.6);
+    text-transform:uppercase;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+.hero-comet {
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    transform: rotate(-30deg);
+    opacity: 0.3;
+    animation: cometShimmer 4s ease-in-out infinite;
+}
+
+.hero-scroll {
+    position:absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform:translateX(-50%);
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: rgba(107,119,204,0.5);
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    opacity: 0;
+    animation: fadeIn 1s 2s forwards;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(107,119,204,0.6), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+
+#stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+
+
+
+/* Section Base */
+section {
+    position: relative;
+    z-index: 1;
+    padding: 8rem 0;
+}
+
+.section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+.section-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    margin-bottom: 3rem;
+    line-height: 1.1;
+}
+
+.divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    margin-bottom: 3rem;
+}
+
+
+
+
+
+/* Topics */
+#topics {
+    border-top: 1px solid rgba(107,119,204,0.12);
+}
+
+.topics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(107,119,204,0.1);
+    border: 1px solid rgba(107,119,204,0.15);
+}
+
+.topic-col {
+    background: var(--midnight);
+    padding: 2rem;
+}
+
+.topic-col-title {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    color: var(--comet);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(107,119,204,0.2);
+}
+
+.topic-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(107,119,204,0.08);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.topic-item:last-child {
+    border-bottom: none;
+}
+
+.topic-item:hover .topic-item-title {
+    color: var(--gold);
+}
+
+.topic-item-date {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    color: rgba(107,119,204,0.5);
+    margin-bottom: 0.3rem;
+}
+
+.topic-item-title {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(200,212,248,0.8);
+    line-height: 1.4;
+    transition: color 0.3s;
+}
+
+.topic-item-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-top: 0.3rem;
+    opacity: 0.7;
+}
+
+
+
+/*  Live  */
+#live {
+    border-top: 1px solid rgba(107,119,204,0.12);
+    background: linear-gradient(to bottom, transparent, rgba(26,31,78,0.2), transparent);
+}
+
+.live-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(107,119,204,0.1);
+    border: 1px solid rgba(107,119,204,0.15);
+}
+
+.live-item {
+    background: var(--midnight);
+    display: grid;
+    grid-template-columns: 180px 1fr auto;
+    align-items: center;
+    padding: 2rem 2.5rem;
+    gap: 2rem;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+.live-item:hover {
+    background: rgba(26,31,78,0.6);
+}
+
+.live-date {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    line-height: 1.5;
+}
+
+.live-info-venue {
+    font-size: 0.75rem;
+    color: rgba(107,119,204,0.7);
+    color: rgba(107,119,204,0.7);
+    font-weight: 300;
+}
+
+.live-arrow {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(107,119,204,0.4);
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.live-item:hover .live-arrow {
+    color: var(--gold);
+}
+
+/*   Discography   */
+#discography {
+    border-top: 1px solid rgba(107,119,204,0.12);
+}
+
+.disco-scroll {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(107,119,204,0.3) transparent;
+}
+
+.disco-scroll::-webkit-scrollbar { height: 2px;}
+.disco-scroll::-webkit-scrollbar-track { background: transparent;}
+.disco-scroll::-webkit-scrollbar-thumb { background: rgba(107,119,204,0.3);}
+
+.disco-card {
+  flex: 0 0 180px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.disco-card:hover { transform: translateY(-6px); }
+
+.disco-card-img {
+    width: 180px;
+    height: 180px;
+    background: var(--navy);
+    border: 1px solid rgba(107,119,204,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.disco-card-img::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(107,119,204,0.1) 0%, transparent 60%);
+}
+
+.disco-card-num {
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    color: rgba(107,119,204,0.3);
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+}
+
+.disco-card-star {
+    font-size: 2rem;
+    opacity: 0.2;
+    color: var(--comet);
+}
+
+.disco-card-title {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(200,212,248,0.7);
+    line-height: 1.3;
+}
+
+
+/*  Music Video   */
+#mv {
+    border-top: 1px solid rgba(107,119,204,0.12);
+    background: linear-gradient(to bottom, transparent, rgba(13,18,48,0.4), transparent);
+}
+
+.mv-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(107,119,204,0.1);
+    border: 1px solid rgba(107,119,204,0.15);
+}
+
+.mv-item {
+    position: relative;
+    aspect-ratio: 16/9;
+    background: var(--navy);
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mv-item-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(4,5,15,0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background 0.3s;
+}
+
+.mv-item:hover .mv-item-overlay {
+    background: rgba(26,31,78,0.5);
+}
+
+.mv-play {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(232,200,122,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.mv-item:hover .mv-play{
+    border-color: var(--gold);
+    transition: scale (1.1);
+}
+
+.mv-play::after {
+    content: '';
+    width: 0; height: 0;
+    border-left: 10px solid rgba(232,200,122,0.8);
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    margin-left: 3px;
+}
+
+.mv-title {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(200,212,248,0.7);
+    letter-spacing: 0.05em;
+}
+
+.mv-release {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: rgba(107,119,204,0.5);
+}
+
+.mv-bg-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    background-image: repeating-linear-gradient(
+        45deg,
+        var(--comet) 0, var(--comet) 1px,
+        transparent 1px, transparent 50%
+        ) ;
+    background-size: 20px 20px;
+}
+
+/*  Footer  */
+footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(107,119,204,0.15);
+    padding: 4rem 3rem;
+    text-align: center;
+}
+
+.footer-logo {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.5rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0 0 2rem 0;
+    padding: 0;
+}
+
+.footer-links a {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: rgba(107,119,204,0.5);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+}
+
+.footer-copy {
+    font-size: 0.7rem;
+    color: rgba(107,119,204,0.3);
+    font-style: italic;
+}
+
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0.3; }
+    to { opacity: 0.8; }
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes cometShimmer {
+    0%, 100% { opacity: 0.2; transform: rotate(-30deg) scaleX(0.8);}
+    50% { opacity: 0.5; transform: rotate(-30deg) scaleX(1.2); }
+}
+
+
+

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="พอร์ตโฟลิโอรวมผลงานด้านเว็บไซต์ โปรแกรม และแอปพลิเคชัน"
+    />
+    <meta name="theme-color" content="#080b12" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="portfolio.js" defer></script>
+    <title>Portfolio | ผลงานและโปรเจกต์</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav container" aria-label="เมนูหลัก">
+        <a class="nav__logo" href="#home" aria-label="กลับไปหน้าแรก">
+          <span class="nav__logo-mark">&lt;/&gt;</span>
+          <span>PORTFOLIO<span class="text-accent">.</span></span>
+        </a>
+
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#about">เกี่ยวกับ</a></li>
+          <li><a class="nav__link" href="#projects">ผลงาน</a></li>
+          <li><a class="nav__link" href="#skills">ทักษะ</a></li>
+          <li><a class="nav__contact" href="#contact">ติดต่อ</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section" id="home">
+        <div class="hero__glow hero__glow--one" aria-hidden="true"></div>
+        <div class="hero__glow hero__glow--two" aria-hidden="true"></div>
+        <div class="container hero__container">
+          <div class="hero__content">
+            <p class="eyebrow"><span class="status-dot"></span> DEVELOPER PORTFOLIO</p>
+            <h1 class="hero__title">
+              สร้างสรรค์ไอเดีย<br />
+              ให้เป็น<span class="text-accent">ผลงานจริง</span>
+            </h1>
+            <p class="hero__description">
+              สวัสดี นี่คือพื้นที่รวบรวมโปรเจกต์ที่ได้ลองออกแบบและพัฒนาด้วยตัวเอง
+              ตั้งแต่เว็บไซต์แนะนำตัวและเว็บแอป ไปจนถึงโปรแกรมบนเดสก์ท็อป
+            </p>
+            <div class="hero__actions">
+              <a class="button button--primary" href="#projects">
+                ดูผลงาน <span aria-hidden="true">↓</span>
+              </a>
+              <a class="button button--outline" href="#contact">ช่องทางติดต่อ</a>
+            </div>
+            <div class="hero__meta">
+              <span><span class="meta-mark">01</span> รวมโปรเจกต์หลากหลาย</span>
+              <span><span class="meta-mark">02</span> ลงมือทำและเรียนรู้ต่อเนื่อง</span>
+            </div>
+          </div>
+
+          <div class="hero__visual">
+            <div class="visual-frame">
+              <div class="visual-frame__top">
+                <span></span><span></span><span></span>
+                <span class="visual-frame__label">PROFILE / 2026</span>
+              </div>
+              <div class="visual-frame__body" data-image-frame>
+                <img
+                  class="visual-photo"
+                  src="Pic/Profile 1.png"
+                  alt="ภาพโปรไฟล์"
+                  data-frame-image
+                  hidden
+                />
+                <div class="visual-orbit visual-orbit--outer"></div>
+                <div class="visual-orbit visual-orbit--inner"></div>
+                <div class="visual-code" aria-hidden="true">
+                  <span>const</span> creator = {<br />
+                  &nbsp;&nbsp;ideas: <i>"many"</i>,<br />
+                  &nbsp;&nbsp;status: <i>"building"</i><br />
+                  };
+                </div>
+                <div class="visual-placeholder">
+                  <span class="visual-placeholder__icon" aria-hidden="true">＋</span>
+                  <span>เพิ่มภาพโปรไฟล์ของคุณ</span>
+                  <small>ใส่รูปในโฟลเดอร์นี้แล้วแทนกรอบนี้ได้เลย</small>
+                </div>
+                <span class="visual-tag">CREATIVE × CODE</span>
+              </div>
+            </div>
+            <span class="hero__visual-caption">DESIGNING · BUILDING · LEARNING</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="about section section--compact" id="about">
+        <div class="container about__container">
+          <div>
+            <p class="eyebrow">01 / ABOUT</p>
+            <h2 class="section__title">เรียนรู้ผ่านการ<span class="text-accent">ลงมือทำ</span></h2>
+          </div>
+          <p class="about__text">
+            ผลงานในหน้านี้มาจากโปรเจกต์ที่มีอยู่ในโฟลเดอร์งานของฉัน
+            มีทั้งงานฝึกทำและต้นแบบเพื่อทดลองแนวคิด รายละเอียดในแต่ละการ์ดระบุขอบเขตตามที่เห็นในโปรเจกต์
+            และเปิดทดลองใช้งานแบบย่อได้จากปุ่มในแต่ละการ์ด
+          </p>
+        </div>
+      </section>
+
+      <section class="projects section" id="projects">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">02 / SELECTED WORK</p>
+              <h2 class="section__title">โปรเจกต์ที่ทำ</h2>
+            </div>
+            <p class="section-heading__note">ตัวอย่างจากงานในโฟลเดอร์โปรเจกต์</p>
+          </div>
+
+          <div class="projects__grid">
+            <article class="project-card">
+              <div class="project-card__image project-card__image--nanahoshi" data-image-frame>
+                <img
+                  class="project-card__photo"
+                  src="Pic/projects/nanahoshi.png"
+                  alt="ภาพตัวอย่าง Nanahoshi Nana"
+                  data-frame-image
+                  hidden
+                />
+                <span class="image-index">PROJECT 01</span>
+                <span class="image-placeholder"><span aria-hidden="true">＋</span> Nanahoshi Nana</span>
+                <span class="image-caption">FAN SITE / GALLERY</span>
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__heading">
+                  <div>
+                    <p class="project-card__type">CHARACTER WEBSITE</p>
+                    <h3>Nanahoshi Nana</h3>
+                  </div>
+                  <span class="project-card__number">01</span>
+                </div>
+                <p class="project-card__description">
+                  เว็บไซต์แนะนำตัวละคร VTuber Nanahoshi Nana ครอบคลุมโปรไฟล์
+                  ดีไซน์คาแรกเตอร์ แกลเลอรี และไทม์ไลน์ พร้อมสลับ Character Sheet ด้วย JavaScript
+                </p>
+                <ul class="tag-list" aria-label="เทคโนโลยีที่ใช้">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                </ul>
+                <p class="project-card__hint">เปิดเว็บไซต์ต้นฉบับและทดลองสลับ Character Sheet ได้</p>
+              </div>
+              <button
+                class="project-preview__toggle"
+                type="button"
+                data-preview-toggle
+                data-open-label="เปิดเว็บ Nanahoshi ในกรอบ"
+                data-close-label="ปิดเว็บ Nanahoshi"
+                aria-expanded="false"
+                aria-controls="preview-nanahoshi"
+              >เปิดเว็บ Nanahoshi ในกรอบ</button>
+              <div class="project-preview" id="preview-nanahoshi" hidden>
+                <div class="project-preview__toolbar">
+                  <span>เว็บไซต์ Nanahoshi Nana · เลื่อนภายในกรอบได้</span>
+                  <a href="demos/nanahoshi/index.html" target="_blank" rel="noopener">เปิดแท็บใหม่</a>
+                </div>
+                <iframe
+                  title="เว็บไซต์ Nanahoshi Nana"
+                  data-preview-src="demos/nanahoshi/index.html"
+                  loading="lazy"
+                  sandbox="allow-scripts"
+                ></iframe>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-card__image project-card__image--hoshimachi" data-image-frame>
+                <img
+                  class="project-card__photo"
+                  src="Pic/projects/hoshimachi.png"
+                  alt="ภาพตัวอย่างเว็บไซต์ Hoshimachi Suisei"
+                  data-frame-image
+                  hidden
+                />
+                <span class="image-index">PROJECT 02</span>
+                <span class="image-placeholder"><span aria-hidden="true">＋</span> Hoshimachi Suisei</span>
+                <span class="image-caption">FAN SITE / MUSIC &amp; LIVE</span>
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__heading">
+                  <div>
+                    <p class="project-card__type">FAN WEBSITE</p>
+                    <h3>Hoshimachi Suisei</h3>
+                  </div>
+                  <span class="project-card__number">02</span>
+                </div>
+                <p class="project-card__description">
+                  เว็บไซต์แฟนเมดธีมดวงดาว รวบรวมข่าว ตารางไลฟ์ รายชื่อเพลง
+                  และมิวสิกวิดีโอ พร้อมเอฟเฟกต์ดาวที่สร้างด้วย JavaScript
+                </p>
+                <ul class="tag-list" aria-label="เทคโนโลยีที่ใช้">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                </ul>
+                <p class="project-card__hint">เปิดเว็บไซต์ต้นฉบับและเลื่อนดูได้ในกรอบทดลอง</p>
+              </div>
+              <button
+                class="project-preview__toggle"
+                type="button"
+                data-preview-toggle
+                data-open-label="เปิดเว็บ Hoshimachi ในกรอบ"
+                data-close-label="ปิดเว็บ Hoshimachi"
+                aria-expanded="false"
+                aria-controls="preview-hoshimachi"
+              >เปิดเว็บ Hoshimachi ในกรอบ</button>
+              <div class="project-preview" id="preview-hoshimachi" hidden>
+                <div class="project-preview__toolbar">
+                  <span>เว็บไซต์ Hoshimachi Suisei · เลื่อนภายในกรอบได้</span>
+                  <a href="demos/hoshimachi/index.html" target="_blank" rel="noopener">เปิดแท็บใหม่</a>
+                </div>
+                <iframe
+                  title="เว็บไซต์ Hoshimachi Suisei"
+                  data-preview-src="demos/hoshimachi/index.html"
+                  loading="lazy"
+                  sandbox="allow-scripts"
+                ></iframe>
+              </div>
+            </article>
+
+            <article class="project-card project-card--featured">
+              <div class="project-card__image project-card__image--deskbuddy" data-image-frame>
+                <img
+                  class="project-card__photo"
+                  src="Pic/projects/deskbuddy.png"
+                  alt="ภาพหน้าจอ DeskBuddy"
+                  data-frame-image
+                  hidden
+                />
+                <span class="image-index">PROJECT 03</span>
+                <span class="image-placeholder"><span aria-hidden="true">＋</span> DeskBuddy preview</span>
+                <span class="image-caption">DESKTOP APP / WINDOWS</span>
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__heading">
+                  <div>
+                    <p class="project-card__type">DESKTOP APPLICATION</p>
+                    <h3>DeskBuddy</h3>
+                  </div>
+                  <span class="project-card__number">03</span>
+                </div>
+                <p class="project-card__description">
+                  เพื่อนตัวเล็กบน Windows ที่ติดตามเวลาเล่นเกมและเตือนให้พัก
+                  พร้อมแจ้งเตือนเรื่องมื้ออาหารและเวลานอน โดยเก็บข้อมูลไว้ในเครื่อง
+                </p>
+                <ul class="tag-list" aria-label="เทคโนโลยีที่ใช้">
+                  <li>Python</li>
+                  <li>Windows</li>
+                  <li>Local data</li>
+                </ul>
+                <p class="project-card__hint">เดโมจำลองการจับเวลาและเตือนพัก ไม่เข้าถึง Windows หรือเกมจริง</p>
+              </div>
+              <button
+                class="project-preview__toggle"
+                type="button"
+                data-preview-toggle
+                data-open-label="ทดลองเล่น DeskBuddy"
+                data-close-label="ปิดเดโม DeskBuddy"
+                aria-expanded="false"
+                aria-controls="preview-deskbuddy"
+              >ทดลองเล่น DeskBuddy</button>
+              <div class="project-preview" id="preview-deskbuddy" hidden>
+                <div class="project-preview__toolbar">
+                  <span>เดโมเว็บจำลอง · ไม่อ่าน process หรือข้อมูลเครื่อง</span>
+                  <a href="demos/deskbuddy/index.html" target="_blank" rel="noopener">เปิดแท็บใหม่</a>
+                </div>
+                <iframe
+                  title="เดโมจำลอง DeskBuddy"
+                  data-preview-src="demos/deskbuddy/index.html"
+                  loading="lazy"
+                  sandbox="allow-scripts"
+                ></iframe>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-card__image project-card__image--check" data-image-frame>
+                <img
+                  class="project-card__photo"
+                  src="Pic/projects/daily-check.svg"
+                  alt="ภาพหน้าจอ Daily Check"
+                  data-frame-image
+                  hidden
+                />
+                <span class="image-index">PROJECT 04</span>
+                <span class="image-placeholder"><span aria-hidden="true">＋</span> Daily Check demo</span>
+                <span class="image-caption">WEB APP / ATTENDANCE TRACKER</span>
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__heading">
+                  <div>
+                    <p class="project-card__type">WEB APPLICATION</p>
+                    <h3>Daily Check</h3>
+                  </div>
+                  <span class="project-card__number">04</span>
+                </div>
+                <p class="project-card__description">
+                  เว็บบันทึกการเข้าเรียน พร้อมค้นหารายชื่อ ดูประวัติประจำวัน
+                  และสรุปสถิติรายสัปดาห์ โดยเดโมในพอร์ตนี้ใช้ข้อมูลตัวอย่างแทน Firebase
+                </p>
+                <ul class="tag-list" aria-label="เทคโนโลยีที่ใช้">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                  <li>Firebase</li>
+                </ul>
+                <p class="project-card__hint">เดโมใช้รายชื่อตัวอย่างในเครื่อง ไม่เชื่อม Firebase</p>
+              </div>
+              <button
+                class="project-preview__toggle"
+                type="button"
+                data-preview-toggle
+                data-open-label="ทดลองเล่น Daily Check"
+                data-close-label="ปิดเดโม Daily Check"
+                aria-expanded="false"
+                aria-controls="preview-daily-check"
+              >ทดลองเล่น Daily Check</button>
+              <div class="project-preview" id="preview-daily-check" hidden>
+                <div class="project-preview__toolbar">
+                  <span>ข้อมูลตัวอย่างเท่านั้น · ไม่มีการเชื่อมต่อหรือเขียนข้อมูล Firebase</span>
+                  <a href="demos/daily-check/index.html" target="_blank" rel="noopener">เปิดแท็บใหม่</a>
+                </div>
+                <iframe
+                  title="เดโมจำลอง Daily Check"
+                  data-preview-src="demos/daily-check/index.html"
+                  loading="lazy"
+                  sandbox="allow-scripts"
+                ></iframe>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills section" id="skills">
+        <div class="container skills__container">
+          <div>
+            <p class="eyebrow">03 / TOOLBOX</p>
+            <h2 class="section__title">เครื่องมือที่ใช้</h2>
+            <p class="skills__description">
+              รายการนี้อ้างอิงจากโปรเจกต์ที่มีอยู่ในโฟลเดอร์ สามารถปรับให้ตรงกับทักษะและเป้าหมายของคุณได้
+            </p>
+          </div>
+          <ul class="skills__list">
+            <li><span>01</span> HTML &amp; CSS</li>
+            <li><span>02</span> JavaScript</li>
+            <li><span>03</span> Python</li>
+            <li><span>04</span> Java</li>
+            <li><span>05</span> C++</li>
+            <li><span>06</span> Firebase</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="contact section" id="contact">
+        <div class="container contact__container">
+          <p class="eyebrow">04 / GET IN TOUCH</p>
+          <h2 class="contact__title">มีโปรเจกต์น่าสนใจไหม?<br /><span class="text-accent">มาคุยกันได้</span></h2>
+          <p class="contact__description">
+            ติดต่อหรือดูผลงานเพิ่มเติมได้ที่นี่
+          </p>
+          <div class="contact__placeholder" role="list" aria-label="ช่องทางติดต่อ">
+            <div class="contact__copy-wrap" role="listitem">
+              <button class="contact__item" type="button" data-copy-email="saonzxm291@gmail.com">
+                <span aria-hidden="true">✉</span>
+                <span>saonzxm291@gmail.com</span>
+              </button>
+              <span class="contact__copy-toast" data-copy-toast aria-hidden="true"></span>
+            </div>
+            <a class="contact__item" href="https://github.com/sook001" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span aria-hidden="true">◌</span>
+              <span>GitHub</span>
+            </a>
+          </div>
+          <p class="contact__copy-status" data-copy-status role="status" aria-live="polite"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__container">
+        <a class="nav__logo" href="#home">
+          <span class="nav__logo-mark">&lt;/&gt;</span>
+          <span>PORTFOLIO<span class="text-accent">.</span></span>
+        </a>
+        <p>ออกแบบและพัฒนาด้วยความตั้งใจ</p>
+        <a class="footer__top" href="#home">กลับขึ้นด้านบน ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,535 @@
+:root {
+  --star: #c084fc;
+  --star-dim: #7c3aed;
+  --accent-red: #ef4444;
+  --accent-blue: #60a5fa;
+  --bg: #07070f;
+  --bg2: #0c0c18;
+  --bg3: #111122;
+  --border: rgba(192,132,252,0.18);
+  --text: #e2d9f3;
+  --muted: #9ca3af;
+  --gold: #fbbf24;
+  --pink: #ec4899;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Sarabun', sans-serif;
+  overflow-x: hidden;
+  cursor: default;
+}
+/* Noise */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 999; opacity: 0.5;
+}
+#stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.star-dot {
+  position: absolute; border-radius: 50%; background: white;
+  animation: twinkle var(--d,3s) ease-in-out infinite;
+  animation-delay: var(--delay,0s);
+}
+@keyframes twinkle {
+  0%,100%{opacity:var(--min,0.1);transform:scale(1)}
+  50%{opacity:var(--max,0.8);transform:scale(1.3)}
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 3rem;
+  background: linear-gradient(180deg,rgba(7,7,15,0.97) 0%,transparent 100%);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(192,132,252,0.08);
+}
+.nav-logo {
+  font-family: 'Bebas Neue',sans-serif; font-size: 1.6rem;
+  letter-spacing: 0.15em; color: var(--star); text-decoration: none;
+}
+.nav-logo span { color: var(--accent-red); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--muted); text-decoration: none;
+  font-family: 'Chakra Petch',sans-serif;
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--star); }
+
+/* ─── HERO ─── */
+.hero {
+  position: relative; min-height: 100vh;
+  display: grid; grid-template-columns: 1fr;
+  align-items: center; gap: 0;
+  padding: 0; overflow: hidden; z-index: 1;
+}
+.hero-glow {
+  position: absolute; width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle,rgba(124,58,237,0.15) 0%,transparent 70%);
+  top: 50%; left: 30%; transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+/* Left: text */
+.hero-index {
+  padding: 8rem 3rem 5rem 4rem;
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; gap: 0;
+  justify-content: center; align-items: center; min-height: 100vh;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: 'Chakra Petch',sans-serif;
+  font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--star); border: 1px solid var(--border);
+  padding: 0.4rem 0.9rem; margin-bottom: 1.8rem; width: fit-content;
+  animation: fadeUp 0.8s ease both;
+}
+.hero-tag::before { content: '★'; font-size: 0.7rem; }
+.seven-stars {
+  display: flex; gap: 0.4rem; margin-bottom: 1.2rem;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+.s-star {
+  color: var(--star); font-size: 1rem;
+  animation: starPulse var(--sd,6s) ease-in-out infinite;
+  animation-delay: var(--sdelay,0s);
+}
+@keyframes starPulse {
+  0%,100%{transform:scale(1);color:var(--star)}
+  50%{transform:scale(1.5);color:var(--gold)}
+}
+.hero-name-jp {
+  font-family: 'Chakra Petch',sans-serif; font-size: 1rem;
+  letter-spacing: 0.5em; color: var(--muted);
+  margin-bottom: 0.3rem; animation: fadeUp 0.8s 0.2s ease both;
+}
+.hero-name {
+  font-family: 'Bebas Neue',sans-serif;
+  font-size: clamp(4rem,9vw,7.5rem);
+  line-height: 0.88; letter-spacing: 0.03em;
+  background: linear-gradient(135deg,#c084fc 0%,#e879f9 40%,#f472b6 65%,#60a5fa 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeUp 0.8s 0.3s ease both; margin-bottom: 0.2rem;
+}
+.hero-name-th {
+  font-family: 'Sarabun',sans-serif; font-size: 1.3rem; font-weight: 300;
+  letter-spacing: 0.2em; color: var(--accent-red);
+  margin-bottom: 2rem; animation: fadeUp 0.8s 0.4s ease both;
+}
+.hero-desc {
+  font-family: 'Sarabun',sans-serif; font-size: 0.9rem;
+  line-height: 1.9; color: var(--muted); max-width: 440px;
+  margin-bottom: 2rem; animation: fadeUp 0.8s 0.45s ease both;
+}
+.hero-motto {
+  font-family: 'Sarabun',sans-serif; font-size: 0.88rem; font-style: italic;
+  color: rgba(192,132,252,0.7); line-height: 1.8;
+  border-left: 2px solid var(--star-dim); padding-left: 1rem;
+  margin-bottom: 2.5rem; animation: fadeUp 0.8s 0.5s ease both;
+}
+.hero-btns {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.6s ease both;
+}
+.btn-primary {
+  background: var(--star-dim); color: white;
+  padding: 0.8rem 2rem; text-decoration: none;
+  font-family: 'Chakra Petch',sans-serif;
+  font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+  border: 1px solid var(--star); transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-primary:hover { background: var(--star); color: var(--bg); transform: translateY(-2px); }
+.btn-outline {
+  background: transparent; color: var(--text);
+  padding: 0.8rem 2rem; text-decoration: none;
+  font-family: 'Chakra Petch',sans-serif;
+  font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+  border: 1px solid var(--border); transition: all 0.2s;
+}
+.btn-outline:hover { border-color: var(--star); color: var(--star); transform: translateY(-2px); }
+
+/* Right: hero image */
+.hero-right {
+  position: relative; height: 100vh;
+  display: flex; align-items: flex-end; justify-content: center;
+  overflow: hidden; z-index: 2;
+}
+.hero-img-wrap {
+  position: relative; width: 100%; height: 100%;
+  display: flex; align-items: flex-end; justify-content: center;
+}
+.hero-char-img {
+  height: 95vh; max-height: 850px;
+  object-fit: contain; object-position: bottom;
+  filter: drop-shadow(0 0 40px rgba(192,132,252,0.25));
+  animation: floatIn 1s 0.3s ease both;
+  position: relative; z-index: 2;
+}
+.hero-img-glow {
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 60%; height: 50%;
+  background: radial-gradient(ellipse at bottom,rgba(124,58,237,0.2) 0%,transparent 70%);
+  pointer-events: none; z-index: 1;
+}
+
+/* Hero stats (replaces inline stats) */
+.hero-stats {
+  display: flex; align-items: center; gap: 1.5rem; margin-top: 1.8rem;
+  animation: fadeUp 0.8s 0.7s ease both; justify-content: center; flex-wrap: wrap;
+}
+.stat-center { text-align: center; }
+.stat-divider { width: 1px; height: 36px; background: var(--border); }
+
+/* Section utility classes */
+.section--alt { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.bg-main { background: var(--bg); }
+
+/* Quote grid/cards */
+.quote-grid { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+.quote-card {
+  background: rgba(192,132,252,0.06); border: 1px solid var(--border);
+  padding: 0.8rem 1.5rem; text-align: left; max-width: 220px;
+}
+.quote-card .card-label {
+  font-family: 'Chakra Petch',sans-serif; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--star);
+  text-transform: uppercase; margin-bottom: 0.3rem;
+}
+.quote-card .card-title {
+  font-family: 'Bebas Neue',sans-serif; font-size: 1.4rem; letter-spacing: 0.1em; color: var(--star-dim);
+}
+.quote-card .card-desc {
+  font-family: 'Sarabun',sans-serif; font-size: 0.75rem; color: var(--muted); line-height: 1.5; margin-top: 0.3rem;
+}
+.quote-card--red .card-title { color: var(--accent-red); }
+.quote-card--blue .card-title { color: var(--accent-blue); }
+.quote-card--star .card-title { color: var(--star); }
+
+@keyframes floatIn { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+/* ─── MARQUEE ─── */
+.marquee-wrap {
+  overflow: hidden; border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0.7rem 0; background: var(--bg2); position: relative; z-index: 1;
+}
+.marquee-track {
+  display: flex; gap: 2.5rem; width: max-content;
+  animation: marqueeScroll 28s linear infinite;
+}
+.marquee-item {
+  font-family: 'Chakra Petch',sans-serif; font-size: 0.78rem;
+  letter-spacing: 0.25em; color: var(--star-dim); white-space: nowrap;
+  text-transform: uppercase;
+}
+.marquee-item span { color: var(--accent-red); }
+@keyframes marqueeScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* ─── SECTION BASE ─── */
+.section-wrap { position: relative; z-index: 1; }
+.section-inner { max-width: 1100px; margin: 0 auto; padding: 5.5rem 2rem; }
+.section-label {
+  font-family: 'Chakra Petch',sans-serif;
+  font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--star); margin-bottom: 0.6rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.section-label::after { content: ''; flex:1; max-width:50px; height:1px; background:var(--border); }
+.section-title {
+  font-family: 'Bebas Neue',sans-serif;
+  font-size: clamp(2.2rem,5vw,3.8rem); letter-spacing: 0.05em; line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.section-subtitle {
+  font-family: 'Sarabun',sans-serif; font-size: 1rem;
+  color: var(--muted); margin-bottom: 2.5rem; line-height: 1.7;
+}
+
+/* ─── ABOUT / PROFILE ─── */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+  align-items: start; margin-top: 2.5rem;
+}
+.about-img-col { position: relative; }
+.about-avatar {
+  width: 100%; aspect-ratio: 1; object-fit: cover; object-position: top;
+  border: 1px solid var(--border);
+  filter: drop-shadow(0 0 20px rgba(192,132,252,0.2));
+  display: block;
+}
+.about-img-tag {
+  position: relative; bottom: auto; left: auto; right: auto;
+  background: linear-gradient(0deg,rgba(7,7,15,0.95),transparent);
+  padding: 1.5rem 1rem 0.8rem;
+  margin-top: -1.2rem;
+  z-index: 2;
+}
+.about-img-tag h3 {
+  font-family: 'Bebas Neue',sans-serif; font-size: 1.4rem;
+  letter-spacing: 0.1em; color: var(--star);
+}
+.about-img-tag p {
+  font-family: 'Sarabun',sans-serif; font-size: 0.72rem;
+  letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase;
+}
+/* Stats strip */
+.stats-strip {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); margin-top: 3rem;
+  position: relative; z-index: 2;
+}
+.stat-cell {
+  background: var(--bg3); padding: 0.8rem 0.5rem; text-align: center;
+}
+.stat-val {
+  font-family: 'Bebas Neue',sans-serif; font-size: 1.5rem; color: var(--star); display: block;
+}
+.stat-lbl {
+  font-family: 'Chakra Petch',sans-serif;
+  font-size: 0.56rem; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase;
+}
+
+/* Info table */
+.info-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+.info-table tr { border-bottom: 1px solid rgba(192,132,252,0.07); }
+.info-table td { padding: 0.65rem 0; font-size: 0.82rem; line-height: 1.6; vertical-align: top; }
+.info-key {
+  font-family: 'Chakra Petch',sans-serif;
+  color: var(--star); width: 38%; font-size: 0.66rem;
+  letter-spacing: 0.08em; text-transform: uppercase; padding-top: 0.75rem;
+}
+.info-val { font-family: 'Sarabun',sans-serif; color: var(--text); }
+
+/* Design block */
+.design-block {
+  background: var(--bg3); border: 1px solid var(--border);
+  padding: 1.5rem 2rem; margin-top: 1.5rem;
+}
+.design-block-title {
+  font-family: 'Chakra Petch',sans-serif; font-size: 0.65rem;
+  letter-spacing: 0.25em; color: var(--star); text-transform: uppercase; margin-bottom: 1.2rem;
+}
+.design-feats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
+.design-feat { border-left: 2px solid var(--star-dim); padding-left: 0.8rem; }
+.design-feat h4 { font-family: 'Chakra Petch',sans-serif; font-size: 0.72rem; color: var(--text); margin-bottom: 0.25rem; letter-spacing: 0.05em; }
+.design-feat p { font-family: 'Sarabun',sans-serif; font-size: 0.75rem; color: var(--muted); line-height: 1.6; }
+
+/* ─── CHARACTER SHEET SECTION ─── */
+.charsheet-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+/* Tab bar */
+.cs-tabs { display: flex; gap: 0; margin-bottom: 0; }
+.cs-tab {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 0.65rem 1.8rem; cursor: pointer; user-select: none;
+  background: var(--bg3); color: var(--muted);
+  border: 1px solid var(--border); border-bottom: none;
+  transition: all 0.2s;
+}
+.cs-tab + .cs-tab { border-left: none; }
+.cs-tab.active { background: var(--star-dim); color: #fff; border-color: var(--star); }
+.cs-tab:not(.active):hover { color: var(--star); }
+
+/* Panel wrapper */
+.cs-body {
+  border: 1px solid var(--star);
+  position: relative; overflow: hidden;
+}
+.cs-panel { display: none; position: relative; }
+.cs-panel.active { display: block; }
+.cs-panel img {
+  width: 100%; display: block;
+  filter: brightness(0.95);
+}
+/* Version badge */
+.cs-badge {
+  position: absolute; top: 1rem; left: 1rem;
+  font-family: 'Chakra Petch',sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  background: rgba(124,58,237,0.85); color: #fff;
+  padding: 0.3rem 0.8rem; border: 1px solid var(--star);
+  backdrop-filter: blur(4px);
+}
+/* Caption */
+.cs-caption {
+  padding: 1.2rem 0 0;
+  font-family: 'Sarabun', sans-serif; font-size: 0.85rem;
+  color: var(--muted); line-height: 1.8; text-align: center;
+}
+
+/* Design breakdown grid */
+.cs-breakdown {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); margin-top: 2rem;
+}
+.cs-feat {
+  background: var(--bg3); padding: 1.2rem 1rem;
+}
+.cs-feat-label {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--star); margin-bottom: 0.4rem;
+}
+.cs-feat-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem; letter-spacing: 0.08em; color: var(--text);
+  margin-bottom: 0.3rem;
+}
+.cs-feat-desc {
+  font-family: 'Sarabun',sans-serif;
+  font-size: 0.75rem; color: var(--muted); line-height: 1.6;
+}
+
+/* ─── OUTFIT / NEW COSTUME ─── */
+.outfit-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  margin-top: 2.5rem; align-items: center;
+}
+.outfit-img { width: 100%; border: 1px solid var(--border); display: block; }
+.outfit-info { display: flex; flex-direction: column; gap: 1.2rem; }
+.outfit-tag {
+  display: inline-block; font-family: 'Chakra Petch',sans-serif;
+  font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent-red); border: 1px solid rgba(239,68,68,0.3);
+  padding: 0.3rem 0.8rem; width: fit-content;
+}
+.outfit-name {
+  font-family: 'Bebas Neue',sans-serif; font-size: 2.5rem;
+  letter-spacing: 0.1em; line-height: 1; color: var(--text);
+}
+.outfit-name span { color: var(--star); }
+.outfit-desc { font-family: 'Sarabun',sans-serif; font-size: 0.88rem; color: var(--muted); line-height: 1.9; }
+.outfit-verse {
+  font-family: 'Sarabun',sans-serif; font-size: 0.8rem; font-style: italic;
+  color: rgba(192,132,252,0.6); border-left: 2px solid var(--star-dim);
+  padding-left: 1rem; line-height: 1.8;
+}
+
+/* ─── PERSONALITY ─── */
+.pers-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2.5rem;
+}
+.pers-card {
+  background: var(--bg3); border: 1px solid var(--border);
+  padding: 1.4rem; transition: all 0.2s; cursor: default; position: relative; overflow: hidden;
+}
+.pers-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg,var(--star-dim),transparent); opacity: 0; transition: opacity 0.3s;
+}
+.pers-card:hover { border-color: var(--star); transform: translateY(-3px); }
+.pers-card:hover::after { opacity: 1; }
+.pers-icon {
+  font-family: 'Bebas Neue',sans-serif; font-size: 1.3rem;
+  color: var(--star); letter-spacing: 0.1em; margin-bottom: 0.5rem; display: block;
+}
+.pers-title { font-family: 'Chakra Petch',sans-serif; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; color: var(--text); }
+.pers-desc { font-family: 'Sarabun',sans-serif; font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+
+/* ─── GALLERY ─── */
+.gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
+/* รูปแนวนอน: เต็ม 2 col */
+.gallery-item { position: relative; overflow: hidden; border: 1px solid var(--border); }
+.gallery-item.wide { grid-column: span 2; aspect-ratio: 16/9; }
+/* รูป square: ครึ่ง col ต่อชิ้น – จับคู่กัน 1:1 */
+.gallery-item.square { grid-column: span 1; aspect-ratio: 1; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; filter: brightness(0.9); }
+.gallery-item:hover img { transform: scale(1.05); filter: brightness(1); }
+.gallery-item .g-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg,rgba(7,7,15,0.6) 0%,transparent 50%);
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.gallery-item:hover .g-overlay { opacity: 1; }
+
+/* ─── QUOTE BANNER ─── */
+.quote-banner {
+  background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  padding: 4rem 2rem; text-align: center; position: relative; z-index: 1; overflow: hidden;
+}
+.quote-banner::before {
+  content: '""'; position: absolute; top: -3rem; left: 2rem;
+  font-family: 'Bebas Neue',sans-serif; font-size: 18rem;
+  color: var(--star-dim); opacity: 0.05; line-height: 1; pointer-events: none;
+}
+.quote-text {
+  font-family: 'Sarabun',sans-serif; font-weight: 600;
+  font-size: clamp(1.1rem,2.5vw,2rem); line-height: 1.7;
+  max-width: 750px; margin: 0 auto 1.2rem; color: var(--text);
+}
+.quote-text .hl { color: var(--star); }
+.quote-src { font-family: 'Chakra Petch',sans-serif; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+
+/* ─── TIMELINE ─── */
+.timeline { margin-top: 2.5rem; position: relative; padding-left: 2.5rem; }
+.timeline::before {
+  content: ''; position: absolute; left: 0.4rem; top: 0; bottom: 0;
+  width: 1px; background: linear-gradient(180deg,var(--star-dim),transparent);
+}
+.tl-item { position: relative; margin-bottom: 2rem; opacity: 0; transform: translateX(-15px); transition: all 0.5s ease; }
+.tl-item.visible { opacity: 1; transform: translateX(0); }
+.tl-dot { position: absolute; left: -2.2rem; top: 0.2rem; width: 9px; height: 9px; border-radius: 50%; background: var(--star); border: 2px solid var(--bg); box-shadow: 0 0 8px var(--star-dim); }
+.tl-year { font-family: 'Chakra Petch',sans-serif; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--star); margin-bottom: 0.2rem; }
+.tl-event { font-family: 'Sarabun',sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.2rem; }
+.tl-detail { font-family: 'Sarabun',sans-serif; font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+
+/* ─── SOCIAL ─── */
+.social-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-top: 2.5rem; }
+.social-card {
+  background: var(--bg3); border: 1px solid var(--border);
+  padding: 1.8rem; text-decoration: none;
+  display: flex; flex-direction: column; gap: 0.6rem;
+  transition: all 0.2s; position: relative; overflow: hidden;
+}
+.social-card:hover { border-color: var(--star); transform: translateY(-4px); }
+.social-platform { font-family: 'Chakra Petch',sans-serif; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--star); }
+.social-handle { font-family: 'Bebas Neue',sans-serif; font-size: 1.4rem; letter-spacing: 0.1em; color: var(--text); }
+.social-desc { font-family: 'Sarabun',sans-serif; font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+.social-arrow { font-size: 1rem; color: var(--star-dim); align-self: flex-end; transition: all 0.2s; }
+.social-card:hover .social-arrow { transform: translate(4px,-4px); color: var(--star); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--bg2); border-top: 1px solid var(--border);
+  padding: 3rem 2rem; text-align: center; position: relative; z-index: 1;
+}
+.footer-logo {
+  font-family: 'Bebas Neue',sans-serif; font-size: 2.2rem; letter-spacing: 0.15em;
+  background: linear-gradient(135deg,#c084fc,#e879f9,#60a5fa);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: 0.4rem;
+}
+.footer-jp { font-family: 'Chakra Petch',sans-serif; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--muted); margin-bottom: 1.8rem; }
+.footer-tags { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+.footer-tag { font-family: 'Chakra Petch',sans-serif; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border: 1px solid rgba(192,132,252,0.12); padding: 0.25rem 0.7rem; }
+.footer-copy { font-family: 'Sarabun',sans-serif; font-size: 0.72rem; color: rgba(156,163,175,0.4); }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+.reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease,transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { height: 50vh; }
+  .hero-char-img { height: 48vh; }
+  .hero-index { padding: 7rem 2rem 2rem; }
+  .about-grid, .outfit-grid, .fans-layout { grid-template-columns: 1fr; }
+  .social-grid, .pers-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-item.wide { grid-column: span 2; }
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+}

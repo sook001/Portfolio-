@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="เดโมเช็คชื่อด้วยข้อมูลนักศึกษาตัวอย่าง ไม่เชื่อม Firebase" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="demo.js" defer></script>
+    <title>Daily Check · Demo</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <div>
+          <p class="brand-eyebrow">IT401 · INTERACTIVE DEMO</p>
+          <h1>Daily Check</h1>
+        </div>
+        <div class="clock">
+          <span id="clockTime">--:--:--</span>
+          <span class="date" id="clockDate">-- --- ----</span>
+        </div>
+      </header>
+
+      <p class="demo-banner">
+        <strong>โหมดทดลอง</strong>
+        รายชื่อและข้อมูลทั้งหมดเป็นตัวอย่าง การเปลี่ยนแปลงจะอยู่แค่ในหน้านี้และหายเมื่อรีโหลด
+      </p>
+
+      <section class="card">
+        <div class="perforation" aria-hidden="true"></div>
+        <div id="rosterPanel" class="panel">
+          <p class="field-label">ค้นหานักศึกษา</p>
+          <input id="rosterSearch" type="search" placeholder="พิมพ์ชื่อหรือรหัสนักศึกษา..." autocomplete="off">
+          <div id="rosterGrid" class="roster-grid" role="listbox" aria-label="รายชื่อนักศึกษาตัวอย่าง"></div>
+        </div>
+
+        <div class="selected-row" id="selectedRow">
+          <span class="selected-tag">เลือกแล้ว</span>
+          <span id="selectedLabel" aria-live="polite">ยังไม่ได้เลือกนักศึกษา</span>
+        </div>
+
+        <p class="field-label">บันทึกสถานะตัวอย่าง</p>
+        <div class="stamp-row">
+          <button class="stamp-btn present" data-status="มาตรง" type="button" disabled>
+            มาตรง<span class="sub">ON TIME</span>
+          </button>
+          <button class="stamp-btn late" data-status="มาสาย" type="button" disabled>
+            มาสาย<span class="sub">LATE</span>
+          </button>
+          <button class="stamp-btn absent" data-status="ขาด" type="button" disabled>
+            ขาด<span class="sub">ABSENT</span>
+          </button>
+        </div>
+        <p id="formMsg" aria-live="polite"></p>
+      </section>
+
+      <section class="feed-section">
+        <div class="feed-heading">
+          <span class="live-dot" aria-hidden="true"></span>
+          <h2>ประวัติวันนี้ (ข้อมูลตัวอย่าง)</h2>
+        </div>
+        <div class="receipt">
+          <div id="logList"></div>
+        </div>
+      </section>
+
+      <section class="stats-section">
+        <div class="feed-heading">
+          <h2>สถิติการเช็คชื่อ (สัปดาห์ตัวอย่าง)</h2>
+        </div>
+        <div class="receipt stats-panel">
+          <input id="statsSearch" type="search" placeholder="ค้นหาชื่อหรือรหัสนักศึกษา..." autocomplete="off">
+          <div class="stats-table-wrap">
+            <table class="stats-table">
+              <thead>
+                <tr>
+                  <th>รหัส</th>
+                  <th>ชื่อ</th>
+                  <th>มาตรง</th>
+                  <th>มาสาย</th>
+                  <th>ขาด</th>
+                  <th>เข้าเรียน %</th>
+                </tr>
+              </thead>
+              <tbody id="statsBody"></tbody>
+            </table>
+          </div>
+          <p id="statsSummary" class="stats-summary"></p>
+        </div>
+      </section>
+
+      <footer class="note">
+        เดโมนี้ไม่เชื่อมต่อ Firebase และไม่ส่งข้อมูลออกจากเบราว์เซอร์
+      </footer>
+    </div>
+
+    <div class="ink-stamp" id="inkStamp" aria-hidden="true">
+      <div class="mark" id="inkStampMark">มาตรง</div>
+    </div>
+  </body>
+</html>

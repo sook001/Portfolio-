@@ -1,0 +1,357 @@
+:root {
+  color-scheme: dark;
+  --bg: #0c111b;
+  --panel: #121b2a;
+  --panel-light: #172337;
+  --border: #2a3a50;
+  --text: #e8eef8;
+  --muted: #9aa8bb;
+  --dim: #708098;
+  --accent: #72c4ff;
+  --accent-soft: #a4d9ff;
+  --green: #83d6ae;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 82% 0, rgba(80, 146, 255, 0.13), transparent 35rem),
+    var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", "Leelawadee UI", Tahoma, sans-serif;
+  line-height: 1.6;
+}
+
+button,
+select {
+  font: inherit;
+}
+
+button:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: 3px;
+}
+
+.demo-shell {
+  width: min(100% - 2rem, 760px);
+  margin: 0 auto;
+  padding: 1.2rem 0 2rem;
+}
+
+.demo-header,
+.brand,
+.timer-heading,
+.timer-controls,
+.routine-controls,
+.reminder-actions {
+  display: flex;
+  align-items: center;
+}
+
+.demo-header,
+.timer-heading {
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.demo-header {
+  margin-bottom: 1rem;
+}
+
+.brand {
+  gap: 0.7rem;
+}
+
+.brand-mark,
+.welcome-orbit {
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(114, 196, 255, 0.4);
+  border-radius: 0.8rem;
+  background: rgba(114, 196, 255, 0.12);
+  color: var(--accent);
+  font-family: Consolas, monospace;
+  font-weight: 700;
+}
+
+.brand-mark {
+  width: 2.7rem;
+  height: 2.7rem;
+}
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+.brand small {
+  color: var(--dim);
+  font-size: 0.7rem;
+}
+
+.demo-label,
+.state-pill {
+  padding: 0.25rem 0.65rem;
+  border: 1px solid rgba(131, 214, 174, 0.35);
+  border-radius: 99px;
+  color: var(--green);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.welcome-card,
+.timer-card,
+.setting-card {
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: linear-gradient(145deg, rgba(23, 35, 55, 0.96), rgba(15, 23, 36, 0.98));
+  box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.18);
+}
+
+.welcome-card {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  padding: 1.35rem 1.5rem;
+}
+
+.welcome-card > :not(.welcome-orbit) {
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-orbit {
+  position: absolute;
+  top: -2.3rem;
+  right: 2rem;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  font-size: 3rem;
+  opacity: 0.45;
+}
+
+.eyebrow {
+  margin: 0 0 0.3rem;
+  color: var(--accent);
+  font-family: Consolas, monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0.45rem;
+  font-size: clamp(1.7rem, 5vw, 2.3rem);
+  line-height: 1.3;
+}
+
+h2 {
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+}
+
+.welcome-card > p:last-child,
+.card-copy,
+.countdown {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.timer-card {
+  padding: 1.25rem 1.5rem;
+}
+
+.timer-heading h2 {
+  margin-bottom: 0;
+}
+
+.timer {
+  margin: 0.7rem 0 0;
+  font-family: Consolas, monospace;
+  font-size: clamp(2.4rem, 10vw, 4rem);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+}
+
+.timer-controls {
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.button {
+  min-height: 2.55rem;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid transparent;
+  border-radius: 0.55rem;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 650;
+  transition: background-color 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.button--primary {
+  background: var(--accent);
+  color: #07101a;
+}
+
+.button--primary:hover:not(:disabled) {
+  background: var(--accent-soft);
+}
+
+.button--quiet {
+  border-color: var(--border);
+  background: transparent;
+  color: var(--text);
+}
+
+.button--outline {
+  border-color: rgba(114, 196, 255, 0.45);
+  background: rgba(114, 196, 255, 0.06);
+  color: var(--accent-soft);
+}
+
+.button--quiet:hover:not(:disabled),
+.button--outline:hover:not(:disabled) {
+  background: rgba(114, 196, 255, 0.14);
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.setting-card {
+  padding: 1.1rem 1.2rem;
+}
+
+.setting-card label {
+  display: block;
+  margin: 0.85rem 0 0.35rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.setting-card select {
+  width: 100%;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: #0b111c;
+  color: var(--text);
+}
+
+.setting-card > .button,
+.routine-controls .button {
+  width: 100%;
+  margin-top: 0.65rem;
+}
+
+.routine-controls {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.15rem;
+  margin-top: 0.65rem;
+}
+
+.session-count,
+.privacy-note {
+  color: var(--dim);
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.session-count {
+  margin: 1.2rem 0 0.4rem;
+}
+
+.session-count strong {
+  color: var(--accent-soft);
+}
+
+.privacy-note {
+  margin-bottom: 0;
+}
+
+.reminder {
+  position: sticky;
+  bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(114, 196, 255, 0.45);
+  border-radius: 0.8rem;
+  background: #172337;
+  box-shadow: 0 0.8rem 2.2rem rgba(0, 0, 0, 0.35);
+}
+
+.reminder[hidden] {
+  display: none;
+}
+
+.reminder-message {
+  margin: 0;
+  font-size: 0.84rem;
+}
+
+.reminder-actions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.4rem;
+}
+
+@media (max-width: 560px) {
+  .demo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reminder {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .reminder-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

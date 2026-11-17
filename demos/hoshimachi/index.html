@@ -1,0 +1,236 @@
+<!-- ทำตามseisei-site.html  -->
+<!DOCTYPE html> 
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星街すいせい</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Noto+Serif+JP:wght@300;400&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!--  cursor  -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+
+    <!-- navbar-->
+    <nav>
+        <a href="#" class="nav-logo">Hoshimachi Suisei</a>
+        <ul class="nav-links">
+            <li><a href="#topics">Topics</a></li>
+            <li><a href="#live">Live</a></li>
+            <li><a href="#discography">Discography</a></li>
+            <li><a href="#mv">Music Video</a></li>
+        </ul>
+    </nav>
+    <!-- HERO -->
+    <canvas id="stars"></canvas>
+    <section id="hero" class="hero">
+        <div class="hero-lable">Virtual Idol · Hololive</div>
+        <h1 class="hero-name-jp">星街すいせい</h1>
+        <p class="hero-name-en">Hoshimachi &nbsp; Suisei</p>
+        <p class="hero-tagline">「彗星のごとく」— Like a comet across the night sky</p>
+        <div class="hero-comet"></div>
+        <div class="hero-scroll">
+            <div class="scroll-line"></div>
+            Scroll
+        </div>
+    </section>
+    
+    <!-- TOPICS -->
+    <section id="topics">
+        <div class="section-inner">
+
+            <div class="section-label">Latest</div>
+            <h2 class="section-title">Topics</h2>
+            <div class="divider"></div>
+
+            <div class="topics-grid ">
+                <!-- News -->
+                 <div class ="topic-col">
+                    <div class ="topic-col-title">News</div>
+                    <div class ="topic-item">
+                        <div class="topic-item-date">2026.04.15</div>
+                        <div class="topic-item-title">ARENA TOUR 2026 Once Upon a Stellar」開催決定</div>
+                        <span class="topic-item-tag">announcement</span>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-item-date">2026.03.20</div>
+                        <div class="topic-item-title">生誕8周年記念グッズ 発売開始</div>
+                        <span class="topic-item-tag">goods</span>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-item-date">2026.02.01</div>
+                        <div class="topic-item-title">公式ファンクラブ「星詠み」が開設</div>
+                        <span class="topic-item-tag">fanclub</span>
+                    </div>
+                 </div>
+                <!-- Magazine/TV -->
+                 <div class ="topic-col">
+                    <div class="topic-col-title">Magazine · TV</div>
+                    <div class="topic-item">
+                        <div class="topic-item-date">2025.08.25</div>
+                        <div class="topic-item-title">Forbes JAPAN 2025年10月号</div>
+                        <span class="topic-item-tag">magazine</span>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-item-date">2025.03.22</div>
+                        <div class="topic-item-title">Venue101 VTuber スペシャル — NHK総合</div>
+                        <span class="topic-item-tag">tv</span>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-item-date">2024.10.07</div>
+                        <div class="topic-item-title">CDTVライブ!ライブ!— TBSテレビ</div>
+                        <span class="topic-item-tag">tv</span>
+                    </div>
+                </div>
+                <!-- Radio -->
+                <div class="topic-col">
+                    <div class="topic-col-title">Radio</div>
+                    <div class="topic-item">
+                        <div class="topic-item-date">毎週土曜</div>
+                        <div class="topic-item-title">ぶいあーる!〜VTuberの音楽Radio〜 — NHKラジオ第1</div>
+                        <span class="topic-item-tag">regular</span>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-item-date">2024.09.09</div>
+                        <div class="topic-item-title">オールナイトニッポン0 (ZERO) — ニッポン放送</div>
+                        <span class="topic-item-tag">radio</span>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-item-date">2024.04.03</div>
+                        <div class="topic-item-title">ミュージックライン — NHK-FM</div>
+                        <span class="topic-item-tag">radio</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live -->
+     <section id="live">
+        <div class="section-inner">
+
+            <div class="section-label">Schedule</div>
+            <h2 class="section-title">Live</h2>
+            <div class="divider"></div>
+
+            <div class="live-list">
+                <div class="live-item">
+                    <div class="live-date">2026.04.05</div>
+                    <div>
+                        <div class="live-info-title">Echoes Baa 2026</div>
+                        <div class="live-info-venue">横浜赤レンガ倉庫 赤レンガパーク特設会場</div>
+                    </div>
+                    <div class="live-arrow">More →</div>
+                </div>
+            </div>
+
+            <div class="live-list">
+                <div class="live-item">
+                    <div class="live-date">2026.09.08<br>- 11.12</div>
+                    <div>
+                        <div class="live-info-title">HOSHIMACHI SUISEI ARENA TOUR 2026「Once Upon a Stellar」</div>
+                        <div class="live-info-venue">Kアリーナ横浜 / GLION ARENA KOBE / IGアリーナ / マリンメッセ福岡</div>
+                    </div>
+                    <div class="live-arrow">More →</div>
+                </div>
+            </div>
+
+            <div class="live-list">
+                <div class="live-item">
+                    <div class="live-date">2027.02.11<br>- 11.12</div>
+                    <div>
+                        <div class="live-info-title">Midnight Grand Orchestra 2nd LIVE「Project:Allegro」</div>
+                        <div class="live-info-venue">幕張メッセ 国際展示場 4-6 ホール</div>
+                    </div>
+                    <div class="live-arrow">More →</div>
+                </div>
+            </div>
+
+        </div>
+     </section>
+
+     <!-- Discography -->
+      <section id="discography">
+        <div class="section-inner">
+
+            <div class="section-label">Works</div>
+            <div class="section-title">Discography</div>
+            <div class="divider"></div>
+            
+            <div class="disco-scroll"></div>
+
+        </div>
+      </section>
+
+      <!-- Music Video -->
+       <section id="mv">
+        <div class="section-inner">
+
+            <div class="section-label">Visual</div>
+            <div class="section-title">Music Video</div>
+            <div class="divider"></div>
+
+            <div class="mv-grid">
+                <div class="mv-item" onclick="window.open('https://www.youtube.com/watch?v=DeAD2b1x3tQ','_blank')">
+                    <div class="mv-bg-pattern"></div>
+                    <div class="mv-item-overlay">
+                        <div class="mv-play"></div>
+                        <div class="mv-title">月に向かって撃て</div>
+                        <div class="mv-release">Jan 28, 2026 · hololive RECORDS</div>
+                    </div>
+                </div>
+
+                <div class="mv-item" onclick="window.open('https://www.youtube.com/watch?v=1YrG2WGeIJo','_blank')">
+                    <div class="mv-bg-pattern"></div>
+                    <div class="mv-item-overlay">
+                        <div class="mv-play"></div>
+                        <div class="mv-title">彗星</div>
+                        <div class="mv-release">Dec 5, 2025 · hololive RECORDS</div>
+                    </div>
+                </div>
+
+                <div class="mv-item" onclick="window.open('https://www.youtube.com/watch?v=VPhLXeU25KA','_blank')">
+                    <div class="mv-bg-pattern"></div>
+                    <div class="mv-item-overlay">
+                        <div class="mv-play"></div>
+                        <div class="mv-title">綺麗事</div>
+                        <div class="mv-release">2025 · hololive RECORDS</div>
+                    </div>
+                </div>
+
+                <div class="mv-item" onclick="window.open('https://www.youtube.com/watch?v=ojZaWERcbaI','_blank')">
+                    <div class="mv-bg-pattern"></div>
+                    <div class="mv-item-overlay">
+                        <div class="mv-play"></div>
+                        <div class="mv-title">もうどうなってもいいや</div>
+                        <div class="mv-release">Dec 24, 2025 · Sony Records</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+       </section>
+
+       <!--  Footer   -->
+       <footer>
+        <span class="footer-logo">Hoshimachi Suisei</span>
+        <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#topics">Topics</a></li>
+            <li><a href="#discography">Discography</a></li>
+            <li><a href="#mv">Music Video</a></li>
+            <li><a href="#">Goods</a></li>
+            <li><a href="#">Fanclub</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <p class="footer-copy">© Studio STELLAR · © COVER Corp · Fan-made recreation for educational purposes</p>
+       </footer>
+
+
+<script src="js/main.js"></script>
+</body>
+</html>

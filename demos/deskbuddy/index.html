@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="เดโมจำลองการจับเวลาและเตือนพักของ DeskBuddy" />
+    <link rel="stylesheet" href="app.css" />
+    <script src="app.js" defer></script>
+    <title>DeskBuddy · Browser Demo</title>
+  </head>
+  <body>
+    <main class="demo-shell">
+      <header class="demo-header">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">DB</span>
+          <span><strong>DeskBuddy</strong><small>Windows companion · browser demo</small></span>
+        </div>
+        <span class="demo-label">DEMO MODE</span>
+      </header>
+
+      <section class="welcome-card" aria-labelledby="welcome-title">
+        <div class="welcome-orbit" aria-hidden="true">✦</div>
+        <p class="eyebrow">YOUR LITTLE BREAK BUDDY</p>
+        <h1 id="welcome-title">เล่นให้เต็มที่<br />แล้วพักบ้างนะ</h1>
+        <p>เดโมนี้จำลองการจับเวลาและการเตือน โดยไม่อ่านเกม เมาส์ คีย์บอร์ด หรือข้อมูลในเครื่อง</p>
+      </section>
+
+      <section class="timer-card" aria-labelledby="timer-title">
+        <div class="timer-heading">
+          <div>
+            <p class="eyebrow">PLAY SESSION</p>
+            <h2 id="timer-title">เวลาที่เล่นวันนี้</h2>
+          </div>
+          <span id="session-state" class="state-pill">พร้อมเริ่ม</span>
+        </div>
+        <p id="elapsed" class="timer" role="timer" aria-label="เวลาที่เล่น">00:00:00</p>
+        <p id="break-countdown" class="countdown">เริ่มจับเวลาเพื่อทดลองเดโม</p>
+        <div class="timer-controls">
+          <button id="start-session" class="button button--primary" type="button">เริ่มเล่น</button>
+          <button id="pause-session" class="button button--quiet" type="button" disabled>พักชั่วคราว</button>
+          <button id="finish-session" class="button button--quiet" type="button" disabled>จบ session</button>
+        </div>
+      </section>
+
+      <div class="demo-grid">
+        <section class="setting-card">
+          <p class="eyebrow">BREAK REMINDER</p>
+          <h2>เตือนพักเป็นระยะ</h2>
+          <label for="break-interval">เตือนทุก</label>
+          <select id="break-interval">
+            <option value="1">1 นาที (ทดลองเร็ว)</option>
+            <option value="2">2 นาที</option>
+            <option value="5">5 นาที</option>
+            <option value="30">30 นาที</option>
+          </select>
+          <button id="test-break" class="button button--outline" type="button">ลองแสดงเตือนพัก</button>
+        </section>
+
+        <section class="setting-card">
+          <p class="eyebrow">DAILY ROUTINE</p>
+          <h2>เตือนกิจวัตร</h2>
+          <p class="card-copy">กดเพื่อดูตัวอย่างข้อความเตือนเรื่องอาหารและเวลานอน</p>
+          <div class="routine-controls">
+            <button id="meal-reminder" class="button button--outline" type="button">ทดสอบเตือนมื้ออาหาร</button>
+            <button id="sleep-reminder" class="button button--outline" type="button">ทดสอบเตือนเข้านอน</button>
+          </div>
+        </section>
+      </div>
+
+      <p class="session-count">จบ session ในเดโมนี้แล้ว <strong id="sessions-finished">0</strong> ครั้ง</p>
+      <footer class="privacy-note">
+        ตัวอย่างนี้ทำงานในกรอบเว็บเท่านั้น ไม่เชื่อม Windows API และไม่ส่งหรือบันทึกข้อมูลออกจากหน้า
+      </footer>
+    </main>
+
+    <aside id="reminder" class="reminder" role="status" aria-live="polite" hidden>
+      <div>
+        <p class="eyebrow">DESKBUDDY SAYS</p>
+        <p id="reminder-message" class="reminder-message"></p>
+      </div>
+      <div class="reminder-actions">
+        <button id="reminder-pause" class="button button--primary" type="button" hidden>พักตอนนี้</button>
+        <button id="reminder-close" class="button button--quiet" type="button">รับทราบ</button>
+      </div>
+    </aside>
+  </body>
+</html>

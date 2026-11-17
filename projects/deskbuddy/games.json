@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Minecraft",
+    "processes": ["javaw.exe"],
+    "window_contains": "Minecraft",
+    "death_log": {
+      "path": "%APPDATA%\\.minecraft\\logs\\latest.log",
+      "player": "YOUR_PLAYER_NAME"
+    }
+  },
+  {
+    "name": "Example Game",
+    "processes": ["ExampleGame.exe"]
+  }
+]
