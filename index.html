@@ -23,6 +23,7 @@
         <ul class="nav__list">
           <li><a class="nav__link" href="#about">เกี่ยวกับ</a></li>
           <li><a class="nav__link" href="#projects">ผลงาน</a></li>
+          <li><a class="nav__link" href="#hobbies">งานอดิเรก</a></li>
           <li><a class="nav__link" href="#skills">ทักษะ</a></li>
           <li><a class="nav__contact" href="#contact">ติดต่อ</a></li>
         </ul>
@@ -339,10 +340,53 @@
         </div>
       </section>
 
+      <section class="hobbies section" id="hobbies">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">03 / HOBBY</p>
+              <h2 class="section__title">งานอดิเรก</h2>
+            </div>
+          </div>
+
+          <div class="hobby-player" data-video-player>
+            <div class="hobby-player__screen">
+              <video
+                class="hobby-player__video"
+                data-video
+                playsinline
+                preload="metadata"
+                poster=""
+                aria-label="วิดีโอผลงานงานอดิเรก"
+              >
+                <source src="Video/Video/Tenshi Akuma Final.mp4" type="video/mp4" />
+              </video>
+              <span class="hobby-player__status">HOBBY / SHOWREEL</span>
+              <button class="hobby-player__control hobby-player__control--play" type="button" data-video-play aria-label="หยุดวิดีโอ">
+                II
+              </button>
+              <button class="hobby-player__control hobby-player__control--mute" type="button" data-video-mute aria-label="ปิดเสียง">
+                เสียงเปิด
+              </button>
+            </div>
+
+            <div class="hobby-player__footer">
+              <button class="hobby-player__arrow" type="button" data-video-prev aria-label="วิดีโอก่อนหน้า">←</button>
+              <div class="hobby-player__info">
+                <p class="hobby-player__title" data-video-title>Tenshi Akuma Final</p>
+                <p class="hobby-player__counter" data-video-counter>01 / 04</p>
+              </div>
+              <div class="hobby-player__dots" data-video-dots aria-label="เลือกวิดีโอ"></div>
+              <button class="hobby-player__arrow" type="button" data-video-next aria-label="วิดีโอถัดไป">→</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="skills section" id="skills">
         <div class="container skills__container">
           <div>
-            <p class="eyebrow">03 / TOOLBOX</p>
+            <p class="eyebrow">04 / TOOLBOX</p>
             <h2 class="section__title">เครื่องมือที่ใช้</h2>
             <p class="skills__description">
               รายการนี้อ้างอิงจากโปรเจกต์ที่มีอยู่ในโฟลเดอร์ สามารถปรับให้ตรงกับทักษะและเป้าหมายของคุณได้
@@ -350,18 +394,17 @@
           </div>
           <ul class="skills__list">
             <li><span>01</span> HTML &amp; CSS</li>
-            <li><span>02</span> JavaScript</li>
-            <li><span>03</span> Python</li>
-            <li><span>04</span> Java</li>
-            <li><span>05</span> C++</li>
-            <li><span>06</span> Firebase</li>
+            <li><span>02</span> Python</li>
+            <li><span>03</span> Java</li>
+            <li><span>04</span> C++</li>
+            <li><span>05</span> Firebase</li>
           </ul>
         </div>
       </section>
 
       <section class="contact section" id="contact">
         <div class="container contact__container">
-          <p class="eyebrow">04 / GET IN TOUCH</p>
+          <p class="eyebrow">05 / GET IN TOUCH</p>
           <h2 class="contact__title">มีโปรเจกต์น่าสนใจไหม?<br /><span class="text-accent">มาคุยกันได้</span></h2>
           <p class="contact__description">
             ติดต่อทางอีเมลหรือ GitHub ได้

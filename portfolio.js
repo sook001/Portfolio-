@@ -49,6 +49,127 @@ document.querySelectorAll("[data-preview-toggle]").forEach((button) => {
   });
 });
 
+document.querySelectorAll("[data-video-player]").forEach((player) => {
+  const video = player.querySelector("[data-video]");
+  const title = player.querySelector("[data-video-title]");
+  const counter = player.querySelector("[data-video-counter]");
+  const dotsContainer = player.querySelector("[data-video-dots]");
+  const previousButton = player.querySelector("[data-video-prev]");
+  const nextButton = player.querySelector("[data-video-next]");
+  const muteButton = player.querySelector("[data-video-mute]");
+  const playButton = player.querySelector("[data-video-play]");
+
+  if (!video || !title || !counter || !dotsContainer || !previousButton || !nextButton || !muteButton || !playButton) {
+    throw new Error("Video player is missing required controls.");
+  }
+
+  const playlist = [
+    { title: "Tenshi Akuma Final", src: "Video/Video/Tenshi Akuma Final.mp4" },
+    { title: "NanarisComplete", src: "Video/Video/NanarisComplete.mp4" },
+    { title: "Nana 3D Model", src: "Video/Video/Nana 3D Model.mp4" },
+    { title: "Nan Final hero", src: "Video/Video/Nan Final hero.mp4" },
+  ];
+
+  let currentIndex = 0;
+  let loadTimer;
+  video.muted = false;
+
+  const updateMuteControl = () => {
+    muteButton.textContent = video.muted ? "เสียงปิด" : "เสียงเปิด";
+    muteButton.setAttribute("aria-label", video.muted ? "เปิดเสียง" : "ปิดเสียง");
+  };
+  updateMuteControl();
+
+  const dots = playlist.map((item, index) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "hobby-player__dot";
+    dot.setAttribute("aria-label", `เปิดวิดีโอ ${item.title}`);
+    dot.addEventListener("click", () => showVideo(index));
+    dotsContainer.append(dot);
+    return dot;
+  });
+
+  const playCurrentVideo = () => {
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        video.controls = false;
+      });
+    }
+  };
+
+  const showVideo = (index) => {
+    window.clearTimeout(loadTimer);
+    currentIndex = (index + playlist.length) % playlist.length;
+    const item = playlist[currentIndex];
+
+    video.pause();
+    video.muted = false;
+    updateMuteControl();
+    video.innerHTML = "";
+    const source = document.createElement("source");
+    source.src = item.src;
+    source.type = "video/mp4";
+    video.append(source);
+    video.load();
+
+    title.textContent = item.title;
+    counter.textContent = `${String(currentIndex + 1).padStart(2, "0")} / ${String(playlist.length).padStart(2, "0")}`;
+    dots.forEach((dot, dotIndex) => {
+      dot.classList.toggle("is-active", dotIndex === currentIndex);
+      dot.setAttribute("aria-current", dotIndex === currentIndex ? "true" : "false");
+    });
+
+    loadTimer = window.setTimeout(playCurrentVideo, 100);
+  };
+
+  previousButton.addEventListener("click", () => showVideo(currentIndex - 1));
+  nextButton.addEventListener("click", () => showVideo(currentIndex + 1));
+  video.addEventListener("ended", () => showVideo(currentIndex + 1));
+  video.addEventListener("error", () => {
+    window.clearTimeout(loadTimer);
+    loadTimer = window.setTimeout(() => showVideo(currentIndex + 1), 1500);
+  });
+
+  muteButton.addEventListener("click", () => {
+    video.muted = !video.muted;
+    updateMuteControl();
+  });
+
+  playButton.addEventListener("click", () => {
+    if (video.paused) {
+      playCurrentVideo();
+    } else {
+      video.pause();
+    }
+  });
+
+  video.addEventListener("play", () => {
+    playButton.textContent = "II";
+    playButton.setAttribute("aria-label", "หยุดวิดีโอ");
+  });
+
+  video.addEventListener("pause", () => {
+    playButton.textContent = "▶";
+    playButton.setAttribute("aria-label", "เล่นวิดีโอ");
+  });
+
+  dots.forEach((dot, dotIndex) => {
+    dot.classList.toggle("is-active", dotIndex === 0);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0]?.isIntersecting) {
+      playCurrentVideo();
+    } else {
+      video.pause();
+    }
+  }, { threshold: 0.45 });
+
+  observer.observe(player);
+});
+
 document.querySelectorAll("[data-copy-email]").forEach((button) => {
   const status = document.querySelector("[data-copy-status]");
   const toast = button.parentElement?.querySelector("[data-copy-toast]");
