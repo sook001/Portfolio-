@@ -36,6 +36,127 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+html.is-loading,
+html.is-loading body {
+  overflow: hidden;
+}
+
+.page-loader {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  visibility: hidden;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(35, 83, 142, 0.2), transparent 38%),
+    var(--color-bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 450ms ease, visibility 0s linear 450ms;
+}
+
+html.is-loading .page-loader {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 450ms ease;
+}
+
+.page-loader.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page-loader__content {
+  display: flex;
+  width: min(22rem, calc(100% - 3rem));
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.page-loader__mark {
+  display: grid;
+  width: 4.25rem;
+  height: 4.25rem;
+  place-items: center;
+  border: 1px solid rgba(101, 184, 255, 0.52);
+  border-radius: 1rem;
+  background: rgba(101, 184, 255, 0.1);
+  box-shadow: 0 0 3.5rem rgba(101, 184, 255, 0.12);
+  color: var(--color-accent-bright);
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  object-fit: contain;
+  padding: 0.3rem;
+  animation: page-loader-pulse 1.5s ease-in-out infinite;
+}
+
+.page-loader__brand {
+  margin-top: 1.3rem;
+  color: var(--color-text);
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.page-loader__brand span {
+  color: var(--color-accent);
+}
+
+.page-loader__message {
+  margin-top: 0.35rem;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+}
+
+.page-loader__track {
+  width: 100%;
+  height: 2px;
+  margin-top: 2rem;
+  overflow: hidden;
+  background: rgba(120, 151, 191, 0.2);
+}
+
+.page-loader__track span {
+  display: block;
+  width: 38%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--color-accent-bright), transparent);
+  animation: page-loader-progress 1.25s ease-in-out infinite;
+}
+
+.page-loader__caption {
+  align-self: flex-start;
+  margin-top: 0.65rem;
+  color: var(--color-dim);
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.13em;
+}
+
+@keyframes page-loader-pulse {
+  50% {
+    box-shadow: 0 0 4.5rem rgba(101, 184, 255, 0.28);
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes page-loader-progress {
+  from {
+    transform: translateX(-110%);
+  }
+
+  to {
+    transform: translateX(280%);
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -151,6 +272,15 @@ button:focus-visible {
   color: var(--color-accent);
   font-size: 0.8rem;
   transition: left 300ms ease;
+}
+
+.nav__logo-image,
+.footer__logo-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: contain;
 }
 
 .nav__list {
@@ -615,6 +745,7 @@ main,
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%;
 }
 
 .visual-frame__body.has-image .visual-orbit,
@@ -858,14 +989,14 @@ main,
 .projects__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-rows: 1fr;
-  align-items: stretch;
+  grid-auto-rows: auto;
+  align-items: start;
   gap: 1.5rem;
 }
 
 .project-card {
   display: flex;
-  height: 100%;
+  height: auto;
   flex-direction: column;
   overflow: hidden;
   border: 1px solid rgba(120, 151, 191, 0.18);
@@ -1328,8 +1459,7 @@ main,
   height: 1.75rem;
   flex: 0 0 1.75rem;
   place-items: center;
-  background: var(--color-accent);
-  color: #07101a;
+  color: var(--color-accent);
   font-family: "Consolas", "Courier New", monospace;
   font-size: 0.68rem;
   font-weight: 700;
@@ -1461,6 +1591,57 @@ main,
 
 .contact__copy-toast.is-visible {
   animation: contact-toast-eject 1.15s ease forwards;
+}
+
+.contact__copy-toast--image {
+  position: fixed;
+  z-index: 1000;
+  width: min(9rem, 28vw);
+  height: 9rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  transform-origin: bottom center;
+}
+
+.contact__copy-toast--image.is-visible {
+  animation: contact-copy-pop 1.8s ease forwards;
+}
+
+.contact__copy-toast-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.contact__copy-toast-image[hidden],
+[data-copy-toast-label][hidden] {
+  display: none;
+}
+
+@keyframes contact-copy-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(0.6rem) scale(0.25);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateY(0) scale(1.08);
+  }
+
+  32%,
+  84% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-0.4rem) scale(0.96);
+  }
 }
 
 .contact__copy-toast[data-state="error"] {
@@ -1944,6 +2125,11 @@ main,
 
   .reveal {
     transition: none;
+  }
+
+  .page-loader__mark,
+  .page-loader__track span {
+    animation: none;
   }
 
   .contact__copy-toast.is-visible {

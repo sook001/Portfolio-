@@ -37,15 +37,37 @@
       name="twitter:image"
       content="https://sook001.github.io/Portfolio-/Pic/projects/deskbuddy.png"
     />
+    <script>
+      document.documentElement.classList.add("is-loading");
+    </script>
     <link rel="stylesheet" href="styles.css" />
     <script src="portfolio.js" defer></script>
     <title>Portfolio | ผลงานและโปรเจกต์</title>
   </head>
   <body>
+    <div class="page-loader" data-page-loader role="status" aria-live="polite">
+      <div class="page-loader__content">
+        <img
+          class="page-loader__mark"
+          src="Pic/Glasses NoBG.png"
+          alt=""
+          aria-hidden="true"
+        />
+        <p class="page-loader__brand">SOOK <span>PORTFOLIO</span></p>
+        <p class="page-loader__message">กำลังเตรียมประสบการณ์</p>
+        <div class="page-loader__track" aria-hidden="true">
+          <span></span>
+        </div>
+        <p class="page-loader__caption">INITIALIZING / PORTFOLIO</p>
+      </div>
+    </div>
+
     <header class="header">
       <nav class="nav container" aria-label="เมนูหลัก">
         <a class="nav__logo" href="#home" aria-label="กลับไปหน้าแรก">
-          <span class="nav__logo-mark">&lt;/&gt;</span>
+          <span class="nav__logo-mark" aria-hidden="true">
+            <img class="nav__logo-image" src="Pic/Glasses.png" alt="" />
+          </span>
           <span class="nav__logo-text">PORTFOLIO<span class="text-accent">.</span></span>
         </a>
 
@@ -564,7 +586,16 @@
                 <span aria-hidden="true">✉</span>
                 <span>saonzxm291@gmail.com</span>
               </button>
-              <span class="contact__copy-toast" data-copy-toast aria-hidden="true"></span>
+              <span class="contact__copy-toast" data-copy-toast aria-hidden="true">
+                <img
+                  class="contact__copy-toast-image"
+                  src="Pic/copy.png"
+                  alt=""
+                  data-copy-toast-image
+                  hidden
+                />
+                <span data-copy-toast-label hidden></span>
+              </span>
             </div>
             <a class="contact__item" href="https://github.com/sook001" target="_blank" rel="noopener noreferrer" role="listitem">
               <span aria-hidden="true">
@@ -591,7 +622,9 @@
     <footer class="footer">
       <div class="container footer__container">
         <a class="footer__logo" href="#home">
-          <span class="footer__logo-mark">&lt;/&gt;</span>
+          <span class="footer__logo-mark" aria-hidden="true">
+            <img class="footer__logo-image" src="Pic/Glasses.png" alt="" />
+          </span>
           <span>PORTFOLIO<span class="text-accent">.</span></span>
         </a>
         <p>ออกแบบและพัฒนาด้วยความตั้งใจ</p>

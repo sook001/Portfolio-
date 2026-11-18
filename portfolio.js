@@ -1,3 +1,20 @@
+const pageLoader = document.querySelector("[data-page-loader]");
+
+if (pageLoader) {
+  const loaderStartedAt = performance.now();
+
+  window.addEventListener("load", () => {
+    const remainingTime = Math.max(0, 900 - (performance.now() - loaderStartedAt));
+
+    window.setTimeout(() => {
+      pageLoader.classList.add("is-hidden");
+      pageLoader.setAttribute("aria-hidden", "true");
+      document.documentElement.classList.remove("is-loading");
+      window.setTimeout(() => pageLoader.remove(), 500);
+    }, remainingTime);
+  }, { once: true });
+}
+
 const sectionLinks = document.querySelectorAll("[data-section-link]");
 const navigableSections = document.querySelectorAll("main .section[id]");
 
@@ -213,9 +230,11 @@ document.querySelectorAll("[data-video-player]").forEach((player) => {
 document.querySelectorAll("[data-copy-email]").forEach((button) => {
   const status = document.querySelector("[data-copy-status]");
   const toast = button.parentElement?.querySelector("[data-copy-toast]");
+  const toastImage = toast?.querySelector("[data-copy-toast-image]");
+  const toastLabel = toast?.querySelector("[data-copy-toast-label]");
   const email = button.dataset.copyEmail;
 
-  if (!status || !toast || !email) {
+  if (!status || !toast || !toastImage || !toastLabel || !email) {
     throw new Error("Email copy button is missing its email or feedback elements.");
   }
 
@@ -223,17 +242,28 @@ document.querySelectorAll("[data-copy-email]").forEach((button) => {
   const showFeedback = (message, isError = false) => {
     window.clearTimeout(dismissTimer);
     status.textContent = message;
-    toast.textContent = isError ? "คัดลอกไม่สำเร็จ" : "คัดลอกแล้ว";
+    toastImage.hidden = isError;
+    toastLabel.hidden = !isError;
+    toastLabel.textContent = isError ? "คัดลอกไม่สำเร็จ" : "";
+    toast.classList.toggle("contact__copy-toast--image", !isError);
     toast.dataset.state = isError ? "error" : "success";
     toast.classList.remove("is-visible");
+    document.body.append(toast);
     const buttonBounds = button.getBoundingClientRect();
-    toast.style.left = `${buttonBounds.left + 8}px`;
-    toast.style.top = `${buttonBounds.top - 8}px`;
-    toast.style.setProperty("--toast-x-apex", `${-Math.min(toast.offsetWidth * 0.28, buttonBounds.width * 0.24)}px`);
-    toast.style.setProperty("--toast-x-land", `${-(toast.offsetWidth * 0.4 + 16)}px`);
-    toast.style.setProperty("--toast-y-apex", "-38px");
-    toast.style.setProperty("--toast-y-land", `${window.innerHeight - (buttonBounds.top - 8) - toast.offsetHeight * 0.6}px`);
-    toast.style.setProperty("--toast-y-exit", `${window.innerHeight - (buttonBounds.top - 8) + toast.offsetHeight + 24}px`);
+    if (isError) {
+      toast.style.left = `${buttonBounds.left + 8}px`;
+      toast.style.top = `${buttonBounds.top - 8}px`;
+      toast.style.setProperty("--toast-x-apex", `${-Math.min(toast.offsetWidth * 0.28, buttonBounds.width * 0.24)}px`);
+      toast.style.setProperty("--toast-x-land", `${-(toast.offsetWidth * 0.4 + 16)}px`);
+      toast.style.setProperty("--toast-y-apex", "-38px");
+      toast.style.setProperty("--toast-y-land", `${window.innerHeight - (buttonBounds.top - 8) - toast.offsetHeight * 0.6}px`);
+      toast.style.setProperty("--toast-y-exit", `${window.innerHeight - (buttonBounds.top - 8) + toast.offsetHeight + 24}px`);
+    } else {
+      const centeredLeft = buttonBounds.left + (buttonBounds.width - toast.offsetWidth) / 2;
+      const maxLeft = window.innerWidth - toast.offsetWidth - 8;
+      toast.style.left = `${Math.max(8, Math.min(centeredLeft, maxLeft))}px`;
+      toast.style.top = `${Math.max(8, buttonBounds.top - toast.offsetHeight - 8)}px`;
+    }
     toast.getBoundingClientRect();
     toast.classList.add("is-visible");
     dismissTimer = window.setTimeout(() => {
