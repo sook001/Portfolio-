@@ -453,9 +453,20 @@ button:focus-visible {
 
 .about__container {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  align-items: center;
-  gap: 4rem;
+  gap: 2.5rem;
+}
+
+.about__intro,
+.about__details {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: start;
+  gap: 2rem;
+}
+
+.about__copy {
+  display: grid;
+  gap: 0.85rem;
 }
 
 .section__title {
@@ -470,6 +481,62 @@ button:focus-visible {
 .skills__description {
   color: var(--color-muted);
   line-height: 2;
+}
+
+.about__panel {
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  background: rgba(16, 23, 37, 0.72);
+}
+
+.about__panel-title {
+  margin-bottom: 1rem;
+  color: var(--color-accent-bright);
+  font-size: 1rem;
+}
+
+.about__facts {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.about__facts > div {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 0.8fr) 1.2fr;
+  gap: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(120, 151, 191, 0.12);
+}
+
+.about__facts > div:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.about__facts dt {
+  color: var(--color-dim);
+}
+
+.about__facts dd {
+  color: var(--color-text);
+}
+
+.about__strengths {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.about__strengths h4 {
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.about__strengths p {
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  line-height: 1.7;
 }
 
 .section-heading {
@@ -1234,6 +1301,16 @@ button:focus-visible {
   .skills__container {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .about__intro,
+  .about__details {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .about__strengths {
+    grid-template-columns: 1fr;
   }
 
   .section-heading {
